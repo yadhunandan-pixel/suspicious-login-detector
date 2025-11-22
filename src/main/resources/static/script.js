@@ -1,3 +1,5 @@
+const API_BASE = "https://suspicious-login-detector-production.up.railway.app";
+
 const logInput = document.getElementById("logInput");
 const thresholdInput = document.getElementById("threshold");
 const fileInput = document.getElementById("fileInput");
@@ -36,13 +38,16 @@ analyzeBtn.addEventListener("click", async () => {
     }
 
     try {
-        const res = await fetch(`/api/analyze?threshold=${encodeURIComponent(threshold)}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "text/plain"
-            },
-            body: csvContent
-        });
+        const res = await fetch(
+            `${API_BASE}/api/analyze?threshold=${encodeURIComponent(threshold)}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain"
+                },
+                body: csvContent
+            }
+        );
 
         if (!res.ok) {
             throw new Error("Server error: " + res.status);
