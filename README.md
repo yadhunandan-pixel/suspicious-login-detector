@@ -33,8 +33,3 @@ This tool helps identify possible **brute-force attacks**, **credential stuffing
 - CSS3  
 - Vanilla JavaScript  
 
----
-
-## 📁 CSV Format  
-Your CSV file must follow this header format:  
-
