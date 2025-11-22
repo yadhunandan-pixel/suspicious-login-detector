@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suspicious Login Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Suspicious Login Detector</h1>
+    <p>Paste your login CSV below. Header format: timestamp,ip,username,status</p>
+
+    <div class="form-group">
+        <label for="threshold">Failed attempt threshold:</label>
+        <input type="number" id="threshold" value="5" min="1">
+    </div>
+
+    <div class="form-group">
+        <label for="logInput">CSV Log Content:</label>
+        <textarea id="logInput" rows="12" placeholder="timestamp,ip,username,status&#10;2025-11-21T10:01:23,192.168.1.10,alice,FAIL"></textarea>
+    </div>
+
+    <div class="actions">
+        <input type="file" id="fileInput" accept=".csv">
+        <button id="analyzeBtn">Analyze Logs</button>
+    </div>
+
+    <div id="result" class="result hidden">
+        <h2>Analysis Result</h2>
+        <p id="summary"></p>
+
+        <h3>Suspicious IPs</h3>
+        <table id="ipTable">
+            <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Failed Attempts</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h3>Usernames Under Attack</h3>
+        <table id="userTable">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Failed Attempts</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div id="error" class="error hidden"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
